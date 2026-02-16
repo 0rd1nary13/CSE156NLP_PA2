@@ -17,6 +17,7 @@ class Utilities:
         self.tokenizer = tokenizer
         self.model = model
 
+    # AI-generated (trivial helper method).
     def sanity_check(self, sentence: str, block_size: int) -> None:
         """Visualize per-layer attention and check row normalization."""
         # Encode the sentence using the tokenizer
@@ -58,6 +59,7 @@ class Utilities:
             # Show the plot
             plt.show()
 
+    # AI-generated (trivial helper method).
     def _extract_attention_maps(self, input_tensor: Tensor) -> list[Tensor]:
         """Extract attention maps from encoder or decoder-style forward APIs."""
         try:

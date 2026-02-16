@@ -21,6 +21,7 @@ class SimpleTokenizer:
         self.vocab_size: int = 0
         self.build_vocab(text)
 
+    # AI-generated (trivial helper method).
     def build_vocab(self, text: str) -> None:
         """Build vocabulary lookup tables from text."""
         tokens = wordpunct_tokenize(text)
@@ -32,11 +33,13 @@ class SimpleTokenizer:
         self.itos = {index: token for token, index in self.stoi.items()}
         self.vocab_size = len(self.stoi)
 
+    # AI-generated (trivial helper method).
     def encode(self, text: str) -> list[int]:
         """Convert text to token ids."""
         tokens = wordpunct_tokenize(text)
         return [self.stoi.get(token, self.stoi[self.UNK_TOKEN]) for token in tokens]
 
+    # AI-generated (trivial helper method).
     def decode(self, indices: Iterable[int]) -> str:
         """Convert token ids back to a whitespace-joined string."""
         return " ".join(self.itos.get(index, self.UNK_TOKEN) for index in indices)

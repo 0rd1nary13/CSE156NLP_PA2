@@ -34,10 +34,12 @@ class SpeechesClassificationDataset(Dataset[tuple[Tensor, Tensor]]):
                     continue
                 self.samples.append((int(label), text))
 
+    # AI-generated (trivial helper method).
     def __len__(self) -> int:
         """Return number of samples."""
         return len(self.samples)
 
+    # AI-generated (trivial helper method).
     def __getitem__(self, index: int) -> tuple[Tensor, Tensor]:
         """Return token ids and label tensor for one sample."""
         label, text = self.samples[index]
@@ -55,10 +57,12 @@ class LanguageModelingDataset(Dataset[tuple[Tensor, Tensor]]):
         self.data = torch.tensor(self.tokenizer.encode(text), dtype=torch.long)
         self.block_size = block_size
 
+    # AI-generated (trivial helper method).
     def __len__(self) -> int:
         """Return total number of windows."""
         return max(0, len(self.data) - self.block_size)
 
+    # AI-generated (trivial helper method).
     def __getitem__(self, idx: int) -> tuple[Tensor, Tensor]:
         """Return one input-target window pair."""
         chunk = self.data[idx : idx + self.block_size + 1]

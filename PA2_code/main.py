@@ -40,6 +40,7 @@ n_output = 3  # Output size for the classifier, we have 3 classes
 epochs_CLS = 15  # epochs for classifier training
 
 
+# AI-generated (trivial helper function).
 def set_seed(seed_value: int) -> None:
     """Set random seeds for reproducibility."""
     random.seed(seed_value)
@@ -48,6 +49,7 @@ def set_seed(seed_value: int) -> None:
         torch.cuda.manual_seed_all(seed_value)
 
 
+# AI-generated (trivial helper function).
 def load_texts(directory: Path) -> list[str]:
     """Load training texts for tokenizer vocabulary construction."""
     texts: list[str] = []
@@ -61,6 +63,7 @@ def load_texts(directory: Path) -> list[str]:
     return texts
 
 
+# AI-generated (trivial helper function).
 def collate_batch(batch: list[tuple[Tensor, Tensor]]) -> tuple[Tensor, Tensor]:
     """Collate a classification batch into padded tensors."""
     data, labels = zip(*batch)  # Separate the data and labels
@@ -78,6 +81,7 @@ def collate_batch(batch: list[tuple[Tensor, Tensor]]) -> tuple[Tensor, Tensor]:
     return padded_sequences, label_tensor
 
 
+# AI-generated (trivial helper function).
 def compute_classifier_accuracy(
     classifier: SpeechClassifier,
     data_loader: DataLoader[tuple[Tensor, Tensor]],
@@ -97,6 +101,7 @@ def compute_classifier_accuracy(
     return 100.0 * total_correct / max(1, total_samples)
 
 
+# AI-generated (trivial helper function).
 def compute_perplexity(
     decoder_model: TransformerDecoderLM,
     data_loader: DataLoader[tuple[Tensor, Tensor]],
@@ -119,11 +124,13 @@ def compute_perplexity(
     return torch.exp(mean_loss).item()
 
 
+# AI-generated (trivial helper function).
 def count_parameters(model: nn.Module) -> int:
     """Count trainable model parameters."""
     return sum(parameter.numel() for parameter in model.parameters() if parameter.requires_grad)
 
 
+# AI-generated (trivial helper function).
 def read_text(file_path: Path) -> str:
     """Read an entire UTF-8 text file."""
     with file_path.open("r", encoding="utf-8") as file:
@@ -197,6 +204,7 @@ def train_part1(tokenizer: SimpleTokenizer, data_dir: Path, run_sanity_check: bo
         )
 
 
+# AI-generated (trivial helper function).
 def build_lm_loader(tokenizer: SimpleTokenizer, text_file: Path, shuffle: bool) -> DataLoader[tuple[Tensor, Tensor]]:
     """Create a language-modeling dataloader from a text file."""
     dataset = LanguageModelingDataset(tokenizer, read_text(text_file), block_size)
@@ -256,6 +264,7 @@ def train_part2(tokenizer: SimpleTokenizer, data_dir: Path, run_sanity_check: bo
         )
 
 
+# AI-generated (trivial helper function).
 def parse_args() -> argparse.Namespace:
     """Parse command-line arguments."""
     parser = argparse.ArgumentParser(description="CSE156 PA2 transformer experiments.")
